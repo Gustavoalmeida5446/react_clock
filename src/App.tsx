@@ -3,6 +3,7 @@ import './App.scss';
 
 function getRandomName(): string {
   const value = Date.now().toString().slice(-4);
+
   return `Clock-${value}`;
 }
 
@@ -25,7 +26,7 @@ class Clock extends React.Component<ClockProps, ClockState> {
   componentDidMount() {
     this.timerId = window.setInterval(() => {
       const currentTime = new Date().toUTCString().slice(-12, -4);
-      
+
       this.setState({ time: currentTime });
 
       // eslint-disable-next-line no-console
@@ -83,7 +84,7 @@ export class App extends React.Component<{}, AppState> {
   componentWillUnmount() {
     document.removeEventListener('contextmenu', this.handleContextMenu);
     document.removeEventListener('click', this.handleClick);
-    
+
     if (this.nameIntervalId) {
       window.clearInterval(this.nameIntervalId);
     }
